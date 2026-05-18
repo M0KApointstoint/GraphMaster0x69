@@ -35,6 +35,7 @@ int main(void)
 		fclose(f);
 		return -1;
 	}
+	ParcurgereDFS(g, 1);
 	DistrugeGraf(&g);
 	fclose(f);
 	return 0;
