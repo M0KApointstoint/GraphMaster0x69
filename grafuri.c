@@ -52,18 +52,26 @@ int InserareArc(TGraf *g, int x, int y)
 	return 0;
 }
 
-void DFSRec(TGraf *g, int x, int *vizitati)
+void DFSRec(TGraf *g, int x, int *vizitat)
 {
-	if (vizitati[x]) {
-		return;
-	}
-	printf("%d\n", x);
-	vizitati[x] = 1;
+	vizitat[x] = vizitat[0]++;
 	TLista p = g->v[x];
 	while (p) {
-		DFSRec(g, p->info, vizitati);
+		printf("%d -> %d\n", x, p->info);
+		if (vizitat[p->info] > 0) {
+			printf("Arcul este de tip revenire.\n");
+		} else if (vizitat[p->info] < 0 && -vizitat[p->info] > vizitat[x]) {
+			printf("Arcul este de tip destinatie.\n");
+		} else if (vizitat[p->info] < 0 && -vizitat[p->info] < vizitat[x]) {
+			printf("Arcul este de tip Traversare.\n");
+		}
+		if (!vizitat[p->info]) {
+			printf("Arcul este de tip adancime.\n");
+			DFSRec(g, p->info, vizitat);
+		}
 		p = p->urm;
 	}
+	vizitat[x] *= -1;
 }
 
 void ParcurgereDFS(TGraf *g, int x)
@@ -71,16 +79,19 @@ void ParcurgereDFS(TGraf *g, int x)
 	if (!g || x < 1 || x > g->n) {
 		return;
 	}
-	int *vizitati = malloc((g->n + 1) * sizeof(int));
-	if (!vizitati) {
+	int *vizitat = malloc((g->n + 1) * sizeof(int));
+	if (!vizitat) {
 		return;
 	}
-	for (int i = 0; i < g->n + 1; ++i) {
-		vizitati[i] = 0;
+	vizitat[0] = 1;
+	for (int i = 1; i < g->n + 1; ++i) {
+		vizitat[i] = 0;
 	}
 	for (int i = 1; i < g->n + 1; ++i) {
-		DFSRec(g, i, vizitati);
+		if (!vizitat[i]) {
+			DFSRec(g, i, vizitat);
+		}
 	}
-	free(vizitati);
+	free(vizitat);
 }
 
