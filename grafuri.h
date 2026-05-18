@@ -16,5 +16,7 @@ int InserareArc(TGraf *g, int x, int y);
 
 void ParcurgereDFS(TGraf *g, int x);
 
+int Aciclic(TGraf *g);
+
 #endif
 

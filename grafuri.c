@@ -95,3 +95,48 @@ void ParcurgereDFS(TGraf *g, int x)
 	free(vizitat);
 }
 
+int AciclicRec(TGraf *g, int i, int *vizitat)
+{
+	if (vizitat[i]) {
+		return 1;
+	}
+	vizitat[i] = vizitat[0]++;
+	TLista p = g->v[i];
+	int cod = 1;
+	while (p) {
+		if (vizitat[p->info] > 0) {
+			return 0;
+		}
+		cod = AciclicRec(g, p->info, vizitat);
+		if (!cod) {
+			return 0;
+		}
+		p = p->urm;
+	}
+	vizitat[i] *= -1;
+	return cod;
+}
+
+int Aciclic(TGraf *g)
+{
+	if (!g) {
+		return 1;
+	}
+	int *vizitat = malloc((g->n + 1) * sizeof(int));
+	if (!vizitat) {
+		return 1;
+	}
+	vizitat[0] = 1;
+	for (int i = 1; i < g->n + 1; ++i) {
+		vizitat[i] = 0;
+	}
+	for (int i = 1; i < g->n + 1; ++i) {
+		if (!AciclicRec(g, i, vizitat)) {
+			free(vizitat);
+			return 0;
+		}
+	}
+	free(vizitat);
+	return 1;
+}
+
