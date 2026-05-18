@@ -36,6 +36,13 @@ int main(void)
 		return -1;
 	}
 	ParcurgereDFS(g, 1);
+
+	if (Aciclic(g)) {
+		printf("Graful este aciclic.\n");
+	} else {
+		printf("Graful este ciclic.\n");
+	}
+
 	DistrugeGraf(&g);
 	fclose(f);
 	return 0;
