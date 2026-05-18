@@ -8,5 +8,7 @@ typedef struct celula{
 
 TLista AlocCelula(int info);
 
+void DistrugeLista(TLista *aL);
+
 #endif
 

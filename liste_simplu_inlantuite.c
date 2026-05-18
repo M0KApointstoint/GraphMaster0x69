@@ -12,3 +12,16 @@ TLista AlocCelula(int info)
 	return aux;
 }
 
+void DistrugeLista(TLista *aL)
+{
+	if (!aL || !*aL) {
+		return;
+	}
+	TLista p = *aL;
+	while (*aL) {
+		*aL = p->urm;
+		free(p);
+		p = *aL;
+	}
+}
+
