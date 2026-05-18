@@ -1,3 +1,4 @@
+#include <stdio.h>
 #include <stdlib.h>
 #include "grafuri.h"
 
@@ -49,5 +50,37 @@ int InserareArc(TGraf *g, int x, int y)
 	}
 	g->v[x]->urm = p;
 	return 0;
+}
+
+void DFSRec(TGraf *g, int x, int *vizitati)
+{
+	if (vizitati[x]) {
+		return;
+	}
+	printf("%d\n", x);
+	vizitati[x] = 1;
+	TLista p = g->v[x];
+	while (p) {
+		DFSRec(g, p->info, vizitati);
+		p = p->urm;
+	}
+}
+
+void ParcurgereDFS(TGraf *g, int x)
+{
+	if (!g || x < 1 || x > g->n) {
+		return;
+	}
+	int *vizitati = malloc((g->n + 1) * sizeof(int));
+	if (!vizitati) {
+		return;
+	}
+	for (int i = 0; i < g->n + 1; ++i) {
+		vizitati[i] = 0;
+	}
+	for (int i = 1; i < g->n + 1; ++i) {
+		DFSRec(g, i, vizitati);
+	}
+	free(vizitati);
 }
 

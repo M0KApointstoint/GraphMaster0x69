@@ -14,5 +14,7 @@ void DistrugeGraf(TGraf **aG);
 
 int InserareArc(TGraf *g, int x, int y);
 
+void ParcurgereDFS(TGraf *g, int x);
+
 #endif
 
