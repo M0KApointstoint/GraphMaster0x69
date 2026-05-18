@@ -10,6 +10,8 @@ typedef struct {
 
 TGraf *InitGraf(int n);
 
+void DistrugeGraf(TGraf **aG);
+
 int InserareArc(TGraf *g, int x, int y);
 
 #endif

@@ -19,6 +19,17 @@ TGraf *InitGraf(int n)
 	return g;
 }
 
+void DistrugeGraf(TGraf **aG)
+{
+	TGraf *g = *aG;
+	for (int i = 0; i < g->n + 1; ++i) {
+		DistrugeLista(g->v + i);
+	}
+	free(g->v);
+	free(g);
+	*aG = NULL;
+}
+
 int InserareArc(TGraf *g, int x, int y)
 {
 	if (!g || x < 1 || x > g->n) {
