@@ -38,6 +38,25 @@ void AfisareInt(void *info)
 	printf("%d ", *(int *)info);
 }
 
+// Inserare la inceput de lista.
+int InserareLG(TLG *aL, void *info)
+{
+	if (!aL || !info) {
+		return -1;
+	}
+	TLG aux = AlocCelulaG(info);
+	if (!aux) {
+		return -1;
+	}
+	if (!*aL) {
+		*aL = aux;
+		return 0;
+	}
+	aux->urm = *aL;
+	*aL = aux;
+	return 0;
+}
+
 int main(void)
 {
 	printf("Hello, World!\n");
