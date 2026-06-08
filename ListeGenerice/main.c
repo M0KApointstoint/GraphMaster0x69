@@ -72,6 +72,11 @@ void DistrugeLG(TLG *aL, void (*DistrugeInfo)(void *))
 	}
 }
 
+void DistrugeInt(void *info)
+{
+	free(info);
+}
+
 int main(void)
 {
 	printf("Hello, World!\n");
