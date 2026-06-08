@@ -20,6 +20,19 @@ TLG AlocCelulaG(void *info)
 	return aux;
 }
 
+void AfisareLG(TLG l, void(*AfisareElem)(void *))
+{
+	if (!l || !AfisareElem) {
+		return;
+	}
+	printf("Lista: [");
+	while (l) {
+		AfisareElem(l->info);
+		l = l->urm;
+	}
+	printf("]\n");
+}
+
 int main(void)
 {
 	printf("Hello, World!\n");
