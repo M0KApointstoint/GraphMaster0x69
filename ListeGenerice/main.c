@@ -93,6 +93,14 @@ int CautaLG(TLG l, void *ref, int (*FCmp)(void *, void *))
 	return 0;
 }
 
+int ComparaInt(void *a, void *b)
+{
+	if (*(int *)a == *(int *)b) {
+		return 1;
+	}
+	return 0;
+}
+
 int main(void)
 {
 	printf("Hello, World!\n");
