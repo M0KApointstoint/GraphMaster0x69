@@ -20,17 +20,22 @@ TLG AlocCelulaG(void *info)
 	return aux;
 }
 
-void AfisareLG(TLG l, void(*AfisareElem)(void *))
+void AfisareLG(TLG l, void(*AfisareInfo)(void *))
 {
-	if (!l || !AfisareElem) {
+	if (!l || !AfisareInfo) {
 		return;
 	}
-	printf("Lista: [");
+	printf("Lista: [ ");
 	while (l) {
-		AfisareElem(l->info);
+		AfisareInfo(l->info);
 		l = l->urm;
 	}
 	printf("]\n");
+}
+
+void AfisareInt(void *info)
+{
+	printf("%d ", *(int *)info);
 }
 
 int main(void)
