@@ -48,13 +48,28 @@ int InserareLG(TLG *aL, void *info)
 	if (!aux) {
 		return -1;
 	}
+	// Partea asta este redundanta.
 	if (!*aL) {
 		*aL = aux;
 		return 0;
 	}
+	// Pana aici.
 	aux->urm = *aL;
 	*aL = aux;
 	return 0;
+}
+
+void DistrugeLG(TLG *aL, void (*DistrugeInfo)(void *))
+{
+	if (!aL || !*aL || !DistrugeInfo) {
+		return;
+	}
+	while (*aL) {
+		TLG aux = *aL;
+		*aL = (*aL)->urm;
+		DistrugeInfo(aux->info);
+		free(aux);
+	}
 }
 
 int main(void)
