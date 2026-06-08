@@ -77,6 +77,22 @@ void DistrugeInt(void *info)
 	free(info);
 }
 
+
+// Functia de comparare trebuie sa returneze 1 pentru egalitate.
+int CautaLG(TLG l, void *ref, int (*FCmp)(void *, void *))
+{
+	if (!l || !FCmp) {
+		return 0;
+	}
+	while (l) {
+		if (FCmp(l->info, ref)) {
+			return 1;
+		}
+		l = l->urm;
+	}
+	return 0;
+}
+
 int main(void)
 {
 	printf("Hello, World!\n");
