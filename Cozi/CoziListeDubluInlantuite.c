@@ -89,6 +89,9 @@ void ResetQ(TCoada *c)
 	if (!c || !c->inc) {
 		return;
 	}
+	DistrugeL2(&c->inc);
+	c->inc = NULL; // For safety.
+	c->sf = NULL;
 }
 
 int main(void)
