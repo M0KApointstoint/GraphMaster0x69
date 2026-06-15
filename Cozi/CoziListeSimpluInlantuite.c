@@ -94,3 +94,13 @@ void ResetQ(TCoada *c)
 	c->sf = NULL;
 }
 
+void DistrugeQ(TCoada *aC)
+{
+	if (!aC || !*aC) {
+		return;
+	}
+	ResetQ(*aC);
+	free(*aC);
+	*aC = NULL;
+}
+
