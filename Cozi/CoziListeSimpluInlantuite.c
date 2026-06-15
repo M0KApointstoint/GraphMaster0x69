@@ -31,8 +31,27 @@ TCoada *InitQ(void)
 	return c;
 }
 
-int InsertQ(TCoada *c, int info)
+int InsQ(TCoada *c, int info)
 {
-	// TODO.
+	if (!c) {
+		return -1;
+	}
+	TCelula *aux = AlocCelula(info);
+	if (!aux) {
+		return -1;
+	}
+	if (!c->inc) {
+		c->inc = aux;
+		c->sf = aux;
+		return 0;
+	}
+	c->sf->urm = aux;
+	c->sf = aux;
+	return 0;
+}
+
+int ExtrQ(TCoada *c, int *aInfo)
+{
+	
 }
 
