@@ -20,3 +20,25 @@ Tree CreateNode(int info)
 	return aux;
 }
 
+int addChild(Tree parent, Tree child)
+{
+	if (!parent) {
+		return -1;
+	}
+	if (!parent->left) {
+		parent->left = child;
+		return 0;
+	}
+	Tree aux = parent->left;
+	while (aux->right) {
+		aux = aux->right;
+	}
+	aux->right = child;
+	return 0;
+}
+
+int main(void)
+{
+	return 0;
+}
+
