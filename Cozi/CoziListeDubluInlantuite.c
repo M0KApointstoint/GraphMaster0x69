@@ -18,6 +18,18 @@ TCelula2 *AlocCelula2(int info)
 	return aux;
 }
 
+void DistrugeL2(TLista2 *aL)
+{
+	if (!aL || !*aL) {
+		return;
+	}
+	while (*aL) {
+		TLista2 target = *aL;
+		*aL = target->urm;
+		free(target);
+	}
+}
+
 typedef struct {
 	TLista2 inc, sf;
 }TCoada;
@@ -70,6 +82,13 @@ int ExtrQ(TCoada *c, int *aX)
 	free(target);
 	c->inc->pre = NULL;
 	return 0;
+}
+
+void ResetQ(TCoada *c)
+{
+	if (!c || !c->inc) {
+		return;
+	}
 }
 
 int main(void)
