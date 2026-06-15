@@ -53,6 +53,25 @@ int InsQ(TCoada *c, int info)
 	return 0;
 }
 
+int ExtrQ(TCoada *c, int *aX)
+{
+	if (!c || !aX || !c->inc) {
+		return -1;
+	}
+	*aX = c->inc->info;
+	if (c->inc == c->sf) {
+		free(c->inc);
+		c->inc = NULL;
+		c->sf = NULL;
+		return 0;
+	}
+	TCelula2 *target = c->inc;
+	c->inc = target->urm;
+	free(target);
+	c->inc->pre = NULL;
+	return 0;
+}
+
 int main(void)
 {
 	return 0;
