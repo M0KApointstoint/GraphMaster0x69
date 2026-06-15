@@ -33,7 +33,7 @@ void DistrugeLG(TListaG *aL, TFDistr f)
 		TListaG target = *aL;
 		*aL = (*aL)->urm;
 		f(target->info);
-		free(target);
+		free(target); // Atentie aici!
 	}
 }
 
@@ -105,9 +105,9 @@ int InsTH(TH *h, void *x, TFCmp f)
 	if (!h || !x || !f) {
 		return -1;
 	}
-	int i = h->fh(x);
+	int i = h->fh(x); // Cheia la hash table!
 	TListaG l = h->v[i];
-	while (l) {
+	while (l) { // Atentie aici!
 		if (!f(l->info, x)) {
 			return 1;
 		}
