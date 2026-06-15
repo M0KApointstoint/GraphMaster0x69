@@ -20,6 +20,20 @@ TCelula *AlocCelula(int info)
 	return aux;
 }
 
+void DistrugeLista(TLista *aL)
+{
+	if (!aL || !*aL) {
+		return;
+	}
+	TLista l = *aL;
+	while (l) {
+		TLista target = l;
+		l = l->urm;
+		free(target);
+	}
+	*aL = NULL;
+}
+
 TCoada *InitQ(void)
 {
     TCoada *c = malloc(sizeof(TCoada));
@@ -67,4 +81,6 @@ int ExtrQ(TCoada *c, int *aX)
 	free(target);
 	return 0;
 }
+
+
 
