@@ -22,6 +22,16 @@ TCelula2 *AlocCelula(int info)
 	return aux;
 }
 
+TCoada *InitQ(void)
+{
+	TCoada *c = malloc(sizeof(TCoada));
+	if (!c) {
+		return NULL;
+	}
+	c->sf = NULL;
+	return c;
+}
+
 int main(void)
 {
 	return 0;
