@@ -1,9 +1,0 @@
-typedef struct celula {
-    int info;
-    struct celula *urm;
-}TCelula, *TLista;
-
-typedef struct coada {
-    TLista inc, sf;
-}TCoada;
-
