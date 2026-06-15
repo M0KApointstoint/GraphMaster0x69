@@ -1,3 +1,4 @@
+#include <stdio.h>
 #include <stdlib.h>
 
 typedef struct celula {
@@ -72,7 +73,7 @@ int ExtrQ(TCoada *c, int *aX)
 	*aX = c->inc->info;
 	if (c->inc == c->sf) {
 		free(c->inc);
-		c->inc = NULL
+		c->inc = NULL;
 		c->sf = NULL;
 		return 0;
 	}
@@ -94,7 +95,7 @@ void ResetQ(TCoada *c)
 	c->sf = NULL;
 }
 
-void DistrugeQ(TCoada *aC)
+void DistrugeQ(TCoada **aC)
 {
 	if (!aC || !*aC) {
 		return;
@@ -102,5 +103,11 @@ void DistrugeQ(TCoada *aC)
 	ResetQ(*aC);
 	free(*aC);
 	*aC = NULL;
+}
+
+int main(void)
+{
+	printf("Hello, World!\n");
+	return 0;
 }
 
