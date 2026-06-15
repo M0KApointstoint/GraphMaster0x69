@@ -15,7 +15,23 @@ typedef struct {
 	int m;
 	TFHash fh;
 	TListaG *v;
-}THash;
+}TH;
+
+TH *InitTH(int m, TFHash fh)
+{
+	TH *h = malloc(sizeof(TH));
+	if (!h) {
+		return NULL;
+	}
+	h->v = calloc(m, sizeof(TListaG));
+	if (!h->v) {
+		free(h);
+		return NULL;
+	}
+	h->m = m;
+	h->fh = fh;
+	return h;
+}
 
 int main(void)
 {
