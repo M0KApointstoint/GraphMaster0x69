@@ -18,6 +18,20 @@ TCelula2 *AlocCelula2(int info)
 	return aux;
 }
 
+typedef struct {
+	TLista sf; // Puteam sa aleg "inc" in loc de "sf".
+}TCoada; // Puteam nici sa nu definesc structura asta.
+
+TCoada *InitQ(void)
+{
+	TCoada *c = malloc(sizeof(TCoada));
+	if (!c) {
+		return NULL;
+	}
+	c->sf = NULL;
+	return c;
+}
+
 int main(void)
 {
 	return 0;
