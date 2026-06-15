@@ -19,8 +19,8 @@ TCelula2 *AlocCelula2(int info)
 }
 
 typedef struct {
-	TLista sf; // Puteam sa aleg "inc" in loc de "sf".
-}TCoada; // Puteam nici sa nu definesc structura asta.
+	TLista2 inc, sf;
+}TCoada;
 
 TCoada *InitQ(void)
 {
@@ -28,8 +28,29 @@ TCoada *InitQ(void)
 	if (!c) {
 		return NULL;
 	}
+	c->inc = NULL;
 	c->sf = NULL;
 	return c;
+}
+
+int InsQ(TCoada *c, int info)
+{
+	if (!c) {
+		return -1;
+	}
+	TCelula2 *aux = AlocCelula2(info);
+	if (!aux) {
+		return -1;
+	}
+	if (!c->inc) {
+		c->inc = aux;
+		c->sf = aux;
+		return 0;
+	}
+	aux->pre = c->sf;
+	c->sf->urm = aux;
+	c->sf = aux;
+	return 0;
 }
 
 int main(void)
