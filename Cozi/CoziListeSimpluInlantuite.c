@@ -82,5 +82,15 @@ int ExtrQ(TCoada *c, int *aX)
 	return 0;
 }
 
-
+void ResetQ(TCoada *c)
+{
+	// Verificari facute deja de functie, dar safety matters.
+	if (!c || !c->inc) {
+		return;
+	}
+	DistrugeLista(&c->inc);
+	// La fel si aici.
+	c->inc = NULL;
+	c->sf = NULL;
+}
 
